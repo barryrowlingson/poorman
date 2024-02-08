@@ -60,7 +60,7 @@ group_split <- function(.data, ..., .keep = TRUE) {
   res <- split_into_groups(context$.data, groups)
   names(res) <- NULL
   if (!isTRUE(.keep)) {
-    res <- lapply(res, function(x) x[, !colnames(x) %in% groups])
+    res <- lapply(res, function(x) x[, !colnames(x) %in% groups, drop=FALSE])
   }
   any_empty <- unlist(lapply(res, function(x) !(nrow(x) == 0L)))
   res[any_empty]
